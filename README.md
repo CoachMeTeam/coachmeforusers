@@ -1,2 +1,2 @@
 # coachmeforusers
-CoachMe part for users
+CoachMe app for users
