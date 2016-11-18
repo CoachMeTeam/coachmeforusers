@@ -36,7 +36,6 @@ public class ReservationTimePickerActivity extends AppCompatActivity {
         startTrainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                System.out.println(newReservationTimeSelected);
                 Intent intent = new Intent(getApplicationContext(), ReservationTimeRemainingActivity.class);
                 intent.putExtra("newReservationTimeSelected", Integer.toString(newReservationTimeSelected));
                 startActivity(intent);
