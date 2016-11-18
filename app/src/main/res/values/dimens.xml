@@ -3,4 +3,5 @@
     <dimen name="activity_horizontal_margin">16dp</dimen>
     <dimen name="activity_vertical_margin">16dp</dimen>
     <dimen name="time_remaining_text_view_text_size">64dp</dimen>
+    <dimen name="time_picker_text_text_size">64dp</dimen>
 </resources>
