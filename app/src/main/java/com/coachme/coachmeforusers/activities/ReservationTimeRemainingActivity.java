@@ -21,7 +21,6 @@ public class ReservationTimeRemainingActivity extends AppCompatActivity {
     private Button stopTrainingButton;
     private TextView timeRemainingTextView;
 
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -73,6 +72,10 @@ public class ReservationTimeRemainingActivity extends AppCompatActivity {
     public void onBackPressed() {
     }
 
+
+    /**
+     * Cette methode renvoie vers l'activité SignInActivity
+     */
     private void backToSignInActivity() {
         Intent intent = new Intent(getApplicationContext(), SignInActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);

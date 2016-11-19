@@ -63,10 +63,15 @@ public class ReservationTimePickerActivity extends AppCompatActivity {
         });
     }
 
+    /**
+     * Cette methode active ou désactive le bouton permettant le démarrage de l'entrainement suivant le temps d'entrainement choisi
+     * Si le temps d'entrainement est égal à 0 alors le bouton est désactivé
+     * Sinon si le temps d'entrainement est supérieur à O alors le bouton est activé
+     */
     private void setStartTrainingButtonAvailability() {
         if (newReservationTimeSelected == 0) {
             startTrainingButton.setEnabled(false);
-        } else {
+        } else if (newReservationTimeSelected > 0) {
             startTrainingButton.setEnabled(true);
         }
     }
