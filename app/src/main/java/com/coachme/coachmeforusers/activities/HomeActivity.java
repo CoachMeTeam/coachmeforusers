@@ -1,22 +1,23 @@
 package com.coachme.coachmeforusers.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
+import android.view.WindowManager;
 import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 
 import com.coachme.coachmeforusers.R;
 
-public class HomeActivity extends AppCompatActivity {
+public class HomeActivity extends Activity {
     private ImageButton coachMeLogoImageButton;
     private Button signInButton;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+        getWindow().addFlags(WindowManager.LayoutParams.FLAG_KEEP_SCREEN_ON);
         setContentView(R.layout.activity_home);
     }
 
@@ -37,9 +38,8 @@ public class HomeActivity extends AppCompatActivity {
         coachMeLogoImageButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(),SignInActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
                 startActivity(intent);
-
             }
         });
 

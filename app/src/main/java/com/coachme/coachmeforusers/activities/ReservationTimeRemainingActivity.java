@@ -1,10 +1,10 @@
 package com.coachme.coachmeforusers.activities;
 
+import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.os.Handler;
-import android.support.v7.app.AppCompatActivity;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -14,7 +14,7 @@ import com.coachme.coachmeforusers.R;
 
 import java.util.concurrent.TimeUnit;
 
-public class ReservationTimeRemainingActivity extends AppCompatActivity {
+public class ReservationTimeRemainingActivity extends Activity {
     private static final String FORMAT = "%02d:%02d:%03d"; // Format du timer
 
     private int reservationTimeSelected = 0;
@@ -71,7 +71,6 @@ public class ReservationTimeRemainingActivity extends AppCompatActivity {
     @Override
     public void onBackPressed() {
     }
-
 
     /**
      * Cette methode renvoie vers l'activité SignInActivity
