@@ -56,8 +56,10 @@ public class SignInActivity extends Activity {
 
         if (!nfcAdapter.isEnabled()) {
             Log.d("NFC", "NFC is disabled");
+            Toast.makeText(this, "NFC is disabled", Toast.LENGTH_LONG).show();
         } else {
             Log.d("NFC", "NFC is enabled");
+            Toast.makeText(this,"NFC is enabled", Toast.LENGTH_LONG).show();
         }
 
         handleIntent(getIntent());
