@@ -81,9 +81,12 @@ public class SignInActivity extends Activity {
 
     private void handleIntent(Intent intent) {
         String action = intent.getAction();
+
+        Toast.makeText(this, "Détection", Toast.LENGTH_LONG).show();
         if (NfcAdapter.ACTION_NDEF_DISCOVERED.equals(action)) {
 
             String type = intent.getType();
+            Toast.makeText(this, "Détection???", Toast.LENGTH_LONG).show();
             if (MIME_TEXT_PLAIN.equals(type)) {
 
                 Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
@@ -95,6 +98,8 @@ public class SignInActivity extends Activity {
         } else if (NfcAdapter.ACTION_TECH_DISCOVERED.equals(action)) {
 
             // In case we would still use the Tech Discovered Intent
+            Toast.makeText(this, "Détection?", Toast.LENGTH_LONG).show();
+
             Tag tag = intent.getParcelableExtra(NfcAdapter.EXTRA_TAG);
             String[] techList = tag.getTechList();
             String searchedTech = Ndef.class.getName();
