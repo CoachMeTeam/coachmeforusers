@@ -8,7 +8,7 @@
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
     android:paddingTop="@dimen/activity_vertical_margin"
-    tools:context="com.coachme.coachmeforusers.activities.ReservationTimePickerActivity">
+    tools:context="com.coachme.coachmeforusers.activities.reservations.ReservationTimePickerActivity">
 
     <Button
         android:text="@string/time_picker_plus_button_text"

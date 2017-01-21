@@ -1,4 +1,4 @@
-package com.coachme.coachmeforusers.activities;
+package com.coachme.coachmeforusers.activities.reservations;
 
 import android.app.Activity;
 import android.content.Intent;
@@ -11,6 +11,7 @@ import android.widget.TextView;
 import android.widget.Toast;
 
 import com.coachme.coachmeforusers.R;
+import com.coachme.coachmeforusers.activities.SignInActivity;
 
 import java.util.concurrent.TimeUnit;
 

@@ -6,7 +6,7 @@ import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
 
-import com.coachme.coachmeforusers.activities.ReservationTimePickerActivity;
+import com.coachme.coachmeforusers.activities.reservations.ReservationTimePickerActivity;
 
 import java.io.IOException;
 

@@ -1,4 +1,4 @@
-package com.coachme.coachmeforusers.activities;
+package com.coachme.coachmeforusers.activities.reservations;
 
 import android.app.Activity;
 import android.content.Intent;
