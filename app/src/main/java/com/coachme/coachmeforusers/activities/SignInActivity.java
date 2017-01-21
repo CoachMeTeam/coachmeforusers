@@ -9,7 +9,6 @@ import com.coachme.coachmeforusers.R;
 import com.coachme.coachmeforusers.service.nfc.NFCCardReader;
 
 public class SignInActivity extends Activity {
-    public static final String TAG = "SignInActivity";
     public static int READER_FLAGS =
             NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK;
     private NfcAdapter nfcAdapter;
