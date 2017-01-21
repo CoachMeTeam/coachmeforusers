@@ -6,13 +6,12 @@ import android.os.Bundle;
 import android.view.View;
 import android.view.WindowManager;
 import android.widget.Button;
-import android.widget.ImageButton;
+import android.widget.ImageView;
 
 import com.coachme.coachmeforusers.R;
-import com.coachme.coachmeforusers.service.wifi.WifiConnectionManager;
 
 public class HomeActivity extends Activity {
-    private ImageButton coachMeLogoImageButton;
+    private ImageView coachMeLogoImageView;
     private Button signInButton;
 
     @Override
@@ -25,7 +24,11 @@ public class HomeActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        coachMeLogoImageButton = (ImageButton) findViewById(R.id.imageButton);
+        initComponents();
+    }
+
+    private void initComponents() {
+        coachMeLogoImageView = (ImageView) findViewById(R.id.imageButton);
         signInButton = (Button) findViewById(R.id.signInButton);
 
         signInButton.setOnClickListener(new View.OnClickListener() {
@@ -35,17 +38,5 @@ public class HomeActivity extends Activity {
                 startActivity(intent);
             }
         });
-
-        coachMeLogoImageButton.setOnClickListener(new View.OnClickListener() {
-            @Override
-            public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
-                startActivity(intent);
-            }
-        });
-
-        WifiConnectionManager wifiConnectionManager = new WifiConnectionManager(this);
-        wifiConnectionManager.connectToWifi("CoachMeWifi", "coachmewifi");
-
     }
 }
