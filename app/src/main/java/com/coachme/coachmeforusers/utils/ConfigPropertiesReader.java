@@ -1,7 +1,6 @@
 package com.coachme.coachmeforusers.utils;
 
 
-
 import com.coachme.coachmeforusers.CoachMeForAdminApp;
 
 import java.util.Properties;
