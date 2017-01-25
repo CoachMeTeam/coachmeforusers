@@ -6,4 +6,7 @@
     <string name="start_training_button_text">Démarrer l\'entrainement</string>
     <string name="stop_training_button_text">Stopper l\'entrainement</string>
     <string name="choosemachine_textview_text">Veuiller choisir une machine</string>
+    <string name="logout_button_text">Se déconnecter</string>
+    <string name="gotomachineslist_button_text">Voir la liste des machines disponibles</string>
+    <string name="title_activity_settings">Settings</string>
 </resources>
