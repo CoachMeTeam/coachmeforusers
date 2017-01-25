@@ -59,7 +59,6 @@ public class SignInActivity extends Activity {
     @Override
     protected void onStart() {
         super.onStart();
-        nfcAdapter = NfcAdapter.getDefaultAdapter(this);
         System.out.println(Helper.getSharedPreference("currentMachine"));
     }
 
