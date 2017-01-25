@@ -10,7 +10,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-
 import com.coachme.coachmeforusers.R;
 import com.coachme.coachmeforusers.model.Machine;
 import com.coachme.coachmeforusers.utils.Helper;
@@ -25,7 +24,7 @@ import java.util.concurrent.TimeUnit;
 import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class ReservationTimeRemainingActivity extends Activity {
-    private static final String FORMAT = "%02d:%02d:%03d"; // Format du timer
+    private static final String TIMER_FORMAT = "%02d:%02d:%03d"; // Format du timer
 
     private int reservationTimeSelected = 0;
     private Button stopTrainingButton;
@@ -48,7 +47,7 @@ public class ReservationTimeRemainingActivity extends Activity {
                 long remainingSeconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished - remainingMinutes * 60 * 1000);
                 long remainingMillis = millisUntilFinished - remainingMinutes * 60 * 1000 - remainingSeconds * 1000;
 
-                timeRemainingTextView.setText("" + String.format(FORMAT, remainingMinutes, remainingSeconds, remainingMillis));
+                timeRemainingTextView.setText("" + String.format(TIMER_FORMAT, remainingMinutes, remainingSeconds, remainingMillis));
             }
 
             public void onFinish() {
