@@ -5,11 +5,11 @@ import android.content.Context;
 
 import com.coachme.coachmeforusers.model.User;
 
-public class CoachMeForAdminApp extends Application {
-    private static CoachMeForAdminApp instance;
+public class CoachMeForUsersApp extends Application {
+    private static CoachMeForUsersApp instance;
     private static User currentUser;
 
-    public static CoachMeForAdminApp getInstance() {
+    public static CoachMeForUsersApp getInstance() {
         return instance;
     }
 
@@ -22,7 +22,7 @@ public class CoachMeForAdminApp extends Application {
     }
 
     public static void setCurrentUser(User currentUser) {
-        CoachMeForAdminApp.currentUser = currentUser;
+        CoachMeForUsersApp.currentUser = currentUser;
     }
 
     @Override
