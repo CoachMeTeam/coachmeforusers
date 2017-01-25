@@ -5,14 +5,26 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.Toast;
 
+import com.coachme.coachmeforusers.CoachMeForAdminApp;
 import com.coachme.coachmeforusers.R;
+import com.coachme.coachmeforusers.model.User;
 import com.coachme.coachmeforusers.service.nfc.NFCCardReader;
+import com.coachme.coachmeforusers.utils.Helper;
+
+import org.restlet.data.MediaType;
+import org.restlet.representation.Representation;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
+
+import java.io.IOException;
+
+import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class SignInActivity extends Activity {
     public static int READER_FLAGS =
             NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK;
-    private NfcAdapter nfcAdapter;
 
+    private NfcAdapter nfcAdapter;
     public NFCCardReader mNFCCardReader;
 
     @Override
@@ -26,15 +38,29 @@ public class SignInActivity extends Activity {
             finish();
             return;
         }
-
-        mNFCCardReader = new NFCCardReader(this);
+        mNFCCardReader = new NFCCardReader();
         enableNFCReaderMode();
+
+        ClientResource usersResource = new ClientResource(API_ENDPOINT + "/users/1");
+        try {
+            Representation representation = usersResource.get(MediaType.APPLICATION_JSON);
+            User user = Helper.convertJsonToObject(representation.getText(), User.class);
+            CoachMeForAdminApp.setCurrentUser(user);
+        } catch (ResourceException e) {
+            Toast.makeText(getApplicationContext(),
+                    "Une erreur est survenue lors du chargement des données utilsateurs.",
+                    Toast.LENGTH_LONG)
+                    .show();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
     }
 
     @Override
     protected void onStart() {
         super.onStart();
         nfcAdapter = NfcAdapter.getDefaultAdapter(this);
+        System.out.println(Helper.getSharedPreference("currentMachine"));
     }
 
     @Override
