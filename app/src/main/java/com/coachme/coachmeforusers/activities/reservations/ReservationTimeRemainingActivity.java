@@ -10,8 +10,8 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
+
 import com.coachme.coachmeforusers.R;
-import com.coachme.coachmeforusers.activities.SignInActivity;
 import com.coachme.coachmeforusers.model.Machine;
 import com.coachme.coachmeforusers.utils.Helper;
 
@@ -59,7 +59,7 @@ public class ReservationTimeRemainingActivity extends Activity {
                 new Handler().postDelayed(
                         new Runnable() {
                             public void run() {
-                                backToSignInActivity();
+                                goToAfterReservationMenuActivity();
                             }
                         }, 4000);
             }
@@ -71,7 +71,7 @@ public class ReservationTimeRemainingActivity extends Activity {
             public void onClick(View v) {
                 countDownTimer.cancel();
                 sendAvailableMachineRequest();
-                backToSignInActivity();
+                goToAfterReservationMenuActivity();
             }
         });
     }
@@ -102,8 +102,8 @@ public class ReservationTimeRemainingActivity extends Activity {
         }
     }
 
-    private void backToSignInActivity() {
-        Intent intent = new Intent(getApplicationContext(), SignInActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+    private void goToAfterReservationMenuActivity() {
+        Intent intent = new Intent(getApplicationContext(), AfterReservationMenuActivity.class);
         startActivity(intent);
     }
 
