@@ -8,6 +8,7 @@ import android.widget.Toast;
 
 import com.coachme.coachmeforusers.activities.reservations.ReservationTimePickerActivity;
 import com.coachme.coachmeforusers.model.Machine;
+import com.coachme.coachmeforusers.model.User;
 import com.coachme.coachmeforusers.utils.Helper;
 
 import org.restlet.data.MediaType;
@@ -42,6 +43,13 @@ public class NFCCardReader implements NfcAdapter.ReaderCallback {
                 ClientResource machineResource = new ClientResource(API_ENDPOINT + "/machines/" + machine.getId());
                 machineResource.put(new JsonRepresentation(jsonMachine), MediaType.APPLICATION_JSON);
 
+                User user = getCurrentUser();
+                user.setLoggedOnAMachine(true);
+                String jsonUser = Helper.convertObjectToJson(user);
+                ClientResource userResource = new ClientResource(API_ENDPOINT + "/users/" + user.getId());
+                userResource.put(new JsonRepresentation(jsonUser), MediaType.APPLICATION_JSON);
+
+                setCurrentUser(user);
                 Helper.storeSharedPreference("currentMachine", jsonMachine);
 
                 Intent intent = new Intent(getContext(), ReservationTimePickerActivity.class);
