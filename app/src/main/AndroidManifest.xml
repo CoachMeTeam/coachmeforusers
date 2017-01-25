@@ -43,10 +43,7 @@
         <activity android:name=".activities.reservations.ReservationTimePickerActivity" />
         <activity android:name=".activities.reservations.ReservationTimeRemainingActivity" />
         <activity android:name=".activities.reservations.AfterReservationMenuActivity" />
-        <activity
-            android:name=".activities.machines.SettingsActivity"
-            android:label="@string/title_activity_settings" />
-        <activity android:name=".activities.machines.MachinesListActivity"></activity>
+        <activity android:name=".activities.machines.MachinesListActivity" />
     </application>
 
 </manifest>
