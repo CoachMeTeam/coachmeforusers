@@ -58,7 +58,10 @@ public class NFCCardReader implements NfcAdapter.ReaderCallback {
                 try {
                     mifare.close();
                 } catch (IOException e) {
-                    e.printStackTrace();
+                    Toast.makeText(getContext(),
+                            "Une erreur est survenue lors du chargement des données utilsateurs.",
+                            Toast.LENGTH_LONG)
+                            .show();
                 }
             } catch (ResourceException e) {
                 Toast.makeText(getContext(),

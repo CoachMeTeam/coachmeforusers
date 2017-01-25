@@ -73,7 +73,10 @@ public class ChooseMachineActivity extends Activity {
                 }
             }
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(getApplicationContext(),
+                    "Une erreur est survenue lors de l'obtention de la liste des machines disponibles.",
+                    Toast.LENGTH_LONG)
+                    .show();
         } catch (ResourceException ex) {
             Toast.makeText(getApplicationContext(),
                     "Une erreur est survenue lors de l'obtention de la liste des machines disponibles.",

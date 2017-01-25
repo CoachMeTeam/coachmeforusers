@@ -52,7 +52,10 @@ public class SignInActivity extends Activity {
                     Toast.LENGTH_LONG)
                     .show();
         } catch (IOException e) {
-            e.printStackTrace();
+            Toast.makeText(getApplicationContext(),
+                    "Une erreur est survenue lors du chargement des données utilsateurs.",
+                    Toast.LENGTH_LONG)
+                    .show();
         }
     }
 
