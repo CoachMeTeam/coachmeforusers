@@ -14,7 +14,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 import java.util.List;
 
-import static com.coachme.coachmeforusers.CoachMeForAdminApp.getContext;
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.getContext;
 
 public class Helper {
     public static final String API_ENDPOINT = ConfigPropertiesReader.getConfig().getProperty("coachme_api_endpoint");

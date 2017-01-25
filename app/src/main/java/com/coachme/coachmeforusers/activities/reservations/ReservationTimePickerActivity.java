@@ -8,7 +8,6 @@ import android.widget.Button;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.coachme.coachmeforusers.CoachMeForAdminApp;
 import com.coachme.coachmeforusers.R;
 import com.coachme.coachmeforusers.model.Machine;
 import com.coachme.coachmeforusers.model.Reservation;
@@ -21,6 +20,7 @@ import org.restlet.resource.ResourceException;
 
 import java.util.Date;
 
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.getCurrentUser;
 import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class ReservationTimePickerActivity extends Activity {
@@ -56,8 +56,7 @@ public class ReservationTimePickerActivity extends Activity {
                 String reservationDate = Helper.getStringDate(new Date());
                 int duration = newReservationTimeSelected * 60;
 
-                Reservation reservation = new Reservation(reservationDate, duration, machine.getId(),
-                        CoachMeForAdminApp.getCurrentUser().getId());
+                Reservation reservation = new Reservation(reservationDate, duration, machine.getId(), getCurrentUser().getId());
                 String jsonReservation = Helper.convertObjectToJson(reservation);
                 try {
                     reservationResource.post(new JsonRepresentation(jsonReservation), MediaType.APPLICATION_JSON);

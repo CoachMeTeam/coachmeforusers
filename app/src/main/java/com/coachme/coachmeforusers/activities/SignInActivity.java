@@ -5,7 +5,6 @@ import android.nfc.NfcAdapter;
 import android.os.Bundle;
 import android.widget.Toast;
 
-import com.coachme.coachmeforusers.CoachMeForAdminApp;
 import com.coachme.coachmeforusers.R;
 import com.coachme.coachmeforusers.model.User;
 import com.coachme.coachmeforusers.service.nfc.NFCCardReader;
@@ -18,6 +17,7 @@ import org.restlet.resource.ResourceException;
 
 import java.io.IOException;
 
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.setCurrentUser;
 import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class SignInActivity extends Activity {
@@ -45,7 +45,7 @@ public class SignInActivity extends Activity {
         try {
             Representation representation = usersResource.get(MediaType.APPLICATION_JSON);
             User user = Helper.convertJsonToObject(representation.getText(), User.class);
-            CoachMeForAdminApp.setCurrentUser(user);
+            setCurrentUser(user);
         } catch (ResourceException e) {
             Toast.makeText(getApplicationContext(),
                     "Une erreur est survenue lors du chargement des données utilsateurs.",

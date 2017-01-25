@@ -18,7 +18,9 @@ import org.restlet.resource.ResourceException;
 import java.io.IOException;
 
 import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
-import static com.coachme.coachmeforusers.CoachMeForAdminApp.getContext;
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.getContext;
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.getCurrentUser;
+import static com.coachme.coachmeforusers.CoachMeForUsersApp.setCurrentUser;
 import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class NFCCardReader implements NfcAdapter.ReaderCallback {
