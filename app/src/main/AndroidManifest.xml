@@ -29,7 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".activities.HomeActivity" />
-        <activity android:name=".activities.ChooseMachineActivity"></activity>
+        <activity android:name=".activities.ChooseMachineActivity" />
         <activity android:name=".activities.SignInActivity">
             <intent-filter>
                 <action android:name="android.nfc.action.NDEF_DISCOVERED" />
@@ -43,4 +43,5 @@
         <activity android:name=".activities.reservations.ReservationTimePickerActivity" />
         <activity android:name=".activities.reservations.ReservationTimeRemainingActivity" />
     </application>
+
 </manifest>
