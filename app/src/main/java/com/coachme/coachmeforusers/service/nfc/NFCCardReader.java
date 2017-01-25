@@ -1,21 +1,27 @@
 package com.coachme.coachmeforusers.service.nfc;
 
-import android.content.Context;
 import android.content.Intent;
 import android.nfc.NfcAdapter;
 import android.nfc.Tag;
 import android.nfc.tech.MifareUltralight;
+import android.widget.Toast;
 
 import com.coachme.coachmeforusers.activities.reservations.ReservationTimePickerActivity;
+import com.coachme.coachmeforusers.model.Machine;
+import com.coachme.coachmeforusers.utils.Helper;
+
+import org.restlet.data.MediaType;
+import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
 
 import java.io.IOException;
 
-public class NFCCardReader implements NfcAdapter.ReaderCallback {
-    private Context context;
+import static android.content.Intent.FLAG_ACTIVITY_NEW_TASK;
+import static com.coachme.coachmeforusers.CoachMeForAdminApp.getContext;
+import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
-    public NFCCardReader(Context c) {
-        context = c;
-    }
+public class NFCCardReader implements NfcAdapter.ReaderCallback {
 
     @Override
     public void onTagDiscovered(Tag tag) {
@@ -25,12 +31,30 @@ public class NFCCardReader implements NfcAdapter.ReaderCallback {
     public void readTag(Tag tag) {
         MifareUltralight mifare = MifareUltralight.get(tag);
         if (mifare != null) {
-            Intent intent = new Intent(context, ReservationTimePickerActivity.class);
-            context.startActivity(intent);
+            String stringMachine = Helper.getSharedPreference("currentMachine");
+            Machine machine = Helper.convertJsonToObject(stringMachine, Machine.class);
+            machine.setAvailable(false);
+
             try {
-                mifare.close();
-            } catch (IOException e) {
-                e.printStackTrace();
+                String jsonMachine = Helper.convertObjectToJson(machine);
+                ClientResource machineResource = new ClientResource(API_ENDPOINT + "/machines/" + machine.getId());
+                machineResource.put(new JsonRepresentation(jsonMachine), MediaType.APPLICATION_JSON);
+
+                Helper.storeSharedPreference("currentMachine", jsonMachine);
+
+                Intent intent = new Intent(getContext(), ReservationTimePickerActivity.class);
+                intent.addFlags(FLAG_ACTIVITY_NEW_TASK);
+                getContext().startActivity(intent);
+                try {
+                    mifare.close();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
+            } catch (ResourceException e) {
+                Toast.makeText(getContext(),
+                        "Une erreur est survenue lors la connexion utilisateur sur la machine.",
+                        Toast.LENGTH_LONG)
+                        .show();
             }
         }
     }
