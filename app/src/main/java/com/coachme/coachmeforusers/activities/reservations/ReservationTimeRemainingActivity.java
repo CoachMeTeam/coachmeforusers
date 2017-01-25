@@ -12,8 +12,16 @@ import android.widget.Toast;
 
 import com.coachme.coachmeforusers.R;
 import com.coachme.coachmeforusers.activities.SignInActivity;
+import com.coachme.coachmeforusers.model.Machine;
+import com.coachme.coachmeforusers.utils.Helper;
+
+import org.restlet.ext.json.JsonRepresentation;
+import org.restlet.resource.ClientResource;
+import org.restlet.resource.ResourceException;
 
 import java.util.concurrent.TimeUnit;
+
+import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
 public class ReservationTimeRemainingActivity extends Activity {
     private static final String FORMAT = "%02d:%02d:%03d"; // Format du timer
@@ -21,24 +29,19 @@ public class ReservationTimeRemainingActivity extends Activity {
     private int reservationTimeSelected = 0;
     private Button stopTrainingButton;
     private TextView timeRemainingTextView;
+    private CountDownTimer countDownTimer;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_time_remaining);
-    }
+        initComponents();
 
-    @Override
-    protected void onStart() {
-        super.onStart();
-        stopTrainingButton = (Button) findViewById(R.id.stopTrainingButton);
-        timeRemainingTextView = (TextView) findViewById(R.id.timeRemainingTextView);
-
-        reservationTimeSelected = Integer.parseInt(getIntent().getStringExtra("newReservationTimeSelected")) * 60000; // Conversion en millis du temps de reservation;
-
-        // Instance du timer de reservation
-        new CountDownTimer(reservationTimeSelected, 10) {
-            // Au démarrage
+        /**
+         * Conversion en millis du temps de reservation
+         */
+        reservationTimeSelected = Integer.parseInt(getIntent().getStringExtra("newReservationTimeSelected")) * 60000;
+        countDownTimer = new CountDownTimer(reservationTimeSelected, 10) {
             public void onTick(long millisUntilFinished) {
                 long remainingMinutes = TimeUnit.MILLISECONDS.toMinutes(millisUntilFinished);
                 long remainingSeconds = TimeUnit.MILLISECONDS.toSeconds(millisUntilFinished - remainingMinutes * 60 * 1000);
@@ -49,8 +52,8 @@ public class ReservationTimeRemainingActivity extends Activity {
 
             public void onFinish() {
                 timeRemainingTextView.setText("00:00:000");
-                Toast toast = Toast.makeText(getApplicationContext(), "Entrainement terminé", Toast.LENGTH_LONG);
-                toast.show();
+                sendAvailableMachineRequest();
+                Toast.makeText(getApplicationContext(), "Entrainement terminé", Toast.LENGTH_LONG).show();
 
                 new Handler().postDelayed(
                         new Runnable() {
@@ -59,11 +62,14 @@ public class ReservationTimeRemainingActivity extends Activity {
                             }
                         }, 4000);
             }
-        }.start();
+        };
+        countDownTimer.start();
 
         stopTrainingButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
+                countDownTimer.cancel();
+                sendAvailableMachineRequest();
                 backToSignInActivity();
             }
         });
@@ -73,11 +79,30 @@ public class ReservationTimeRemainingActivity extends Activity {
     public void onBackPressed() {
     }
 
-    /**
-     * Cette methode renvoie vers l'activité SignInActivity
-     */
+    private void sendAvailableMachineRequest() {
+        try {
+            String stringMachine = Helper.getSharedPreference("currentMachine");
+            Machine machine = Helper.convertJsonToObject(stringMachine, Machine.class);
+            machine.setAvailable(true);
+            String jsonMachine = Helper.convertObjectToJson(machine);
+
+            ClientResource machineResource = new ClientResource(API_ENDPOINT + "/machines/" + machine.getId());
+            machineResource.put(new JsonRepresentation(jsonMachine), Machine.class);
+        } catch (ResourceException e) {
+            Toast.makeText(getApplicationContext(),
+                    "Une erreur est survenue lors de la libération de la machine.",
+                    Toast.LENGTH_LONG)
+                    .show();
+        }
+    }
+
     private void backToSignInActivity() {
         Intent intent = new Intent(getApplicationContext(), SignInActivity.class).addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
         startActivity(intent);
+    }
+
+    private void initComponents() {
+        stopTrainingButton = (Button) findViewById(R.id.stopTrainingButton);
+        timeRemainingTextView = (TextView) findViewById(R.id.timeRemainingTextView);
     }
 }
