@@ -11,20 +11,20 @@
     tools:context="com.coachme.coachmeforusers.activities.reservations.ReservationTimeRemainingActivity">
 
     <TextView
+        android:id="@+id/timeRemainingTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timeRemainingTextView"
-        android:layout_centerVertical="true"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/time_remaining_text_view_text_size"/>
+        android:layout_centerVertical="true"
+        android:textSize="@dimen/time_remaining_text_view_text_size" />
 
     <Button
-        android:text="@string/stop_training_button_text"
+        android:id="@+id/stopTrainingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="67dp"
-        android:id="@+id/stopTrainingButton" />
+        android:text="@string/stop_training_button_text" />
 
 </RelativeLayout>

@@ -11,38 +11,38 @@
     tools:context="com.coachme.coachmeforusers.activities.reservations.ReservationTimePickerActivity">
 
     <Button
-        android:text="@string/time_picker_plus_button_text"
+        android:id="@+id/timePickerPlusButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="66dp"
-        android:id="@+id/timePickerPlusButton" />
+        android:text="@string/time_picker_plus_button_text" />
 
     <Button
-        android:text="@string/time_picker_less_button_text"
+        android:id="@+id/timePickerLessButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timePickerLessButton"
+        android:layout_alignStart="@+id/timePickerPlusButton"
         android:layout_centerVertical="true"
-        android:layout_alignStart="@+id/timePickerPlusButton" />
+        android:text="@string/time_picker_less_button_text" />
 
     <TextView
+        android:id="@+id/timePickerTextView"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:id="@+id/timePickerTextView"
-        android:layout_marginTop="46dp"
         android:layout_below="@+id/timePickerPlusButton"
         android:layout_centerHorizontal="true"
-        android:textSize="@dimen/time_picker_text_text_size"/>
+        android:layout_marginTop="46dp"
+        android:textSize="@dimen/time_picker_text_text_size" />
 
     <Button
-        android:text="@string/start_training_button_text"
+        android:id="@+id/startTrainingButton"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
-        android:layout_marginBottom="43dp"
-        android:id="@+id/startTrainingButton"
         android:layout_alignParentBottom="true"
-        android:layout_centerHorizontal="true" />
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="43dp"
+        android:text="@string/start_training_button_text" />
 
 </RelativeLayout>
