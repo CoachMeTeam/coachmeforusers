@@ -15,6 +15,7 @@ import com.coachme.coachmeforusers.activities.SignInActivity;
 import com.coachme.coachmeforusers.model.Machine;
 import com.coachme.coachmeforusers.utils.Helper;
 
+import org.restlet.data.MediaType;
 import org.restlet.ext.json.JsonRepresentation;
 import org.restlet.resource.ClientResource;
 import org.restlet.resource.ResourceException;
@@ -87,7 +88,12 @@ public class ReservationTimeRemainingActivity extends Activity {
             String jsonMachine = Helper.convertObjectToJson(machine);
 
             ClientResource machineResource = new ClientResource(API_ENDPOINT + "/machines/" + machine.getId());
-            machineResource.put(new JsonRepresentation(jsonMachine), Machine.class);
+            machineResource.put(new JsonRepresentation(jsonMachine), MediaType.APPLICATION_JSON);
+
+            Toast.makeText(getApplicationContext(),
+                    "La réservation de la machine vient de se terminer.",
+                    Toast.LENGTH_LONG)
+                    .show();
         } catch (ResourceException e) {
             Toast.makeText(getApplicationContext(),
                     "Une erreur est survenue lors de la libération de la machine.",
