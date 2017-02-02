@@ -9,11 +9,14 @@ import android.widget.Button;
 import android.widget.TextView;
 
 import com.coachme.coachmeforusers.R;
+import com.coachme.coachmeforusers.activities.signin.SignInWithCredentials;
+import com.coachme.coachmeforusers.activities.signin.SignInWithNFCActivity;
 import com.coachme.coachmeforusers.model.Machine;
 import com.coachme.coachmeforusers.utils.Helper;
 
 public class HomeActivity extends Activity {
-    private Button signInButton;
+    private Button signInWithNFCButton;
+    private Button signInWithCredentialsButton;
     private TextView machineNameTextView;
 
     @Override
@@ -34,15 +37,25 @@ public class HomeActivity extends Activity {
         Machine machine = Helper.convertJsonToObject(stringMachine, Machine.class);
 
         machineNameTextView = (TextView) findViewById(R.id.machineNameTextView);
-        signInButton = (Button) findViewById(R.id.signInButton);
+        signInWithNFCButton = (Button) findViewById(R.id.signInWithNFCButton);
+        signInWithCredentialsButton = (Button) findViewById(R.id.signInWithCredentialsButton);
 
         machineNameTextView.setText(machine.getMachineName());
-        signInButton.setOnClickListener(new View.OnClickListener() {
+        signInWithNFCButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent intent = new Intent(getApplicationContext(), SignInActivity.class);
+                Intent intent = new Intent(getApplicationContext(), SignInWithNFCActivity.class);
                 startActivity(intent);
             }
         });
+
+        signInWithCredentialsButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(getApplicationContext(), SignInWithCredentials.class);
+                startActivity(intent);
+            }
+        });
+
     }
 }

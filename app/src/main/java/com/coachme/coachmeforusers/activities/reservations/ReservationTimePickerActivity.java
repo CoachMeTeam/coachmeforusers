@@ -59,6 +59,12 @@ public class ReservationTimePickerActivity extends Activity {
                 Reservation reservation = new Reservation(reservationDate, duration, machine.getId(), getCurrentUser().getId());
                 String jsonReservation = Helper.convertObjectToJson(reservation);
                 try {
+                    machine.setAvailable(false);
+                    String jsonMachine = Helper.convertObjectToJson(machine);
+                    Helper.storeSharedPreference("currentMachine", jsonMachine);
+                    ClientResource machineResource = new ClientResource(API_ENDPOINT + "/machines/" + machine.getId());
+                    machineResource.put(new JsonRepresentation(jsonMachine), MediaType.APPLICATION_JSON);
+
                     reservationResource.post(new JsonRepresentation(jsonReservation), MediaType.APPLICATION_JSON);
 
                     Intent intent = new Intent(getApplicationContext(), ReservationTimeRemainingActivity.class);

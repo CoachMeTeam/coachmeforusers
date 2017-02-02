@@ -1,6 +1,7 @@
 package com.coachme.coachmeforusers.activities.machines;
 
 import android.app.Activity;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.os.CountDownTimer;
 import android.view.Gravity;
@@ -80,6 +81,7 @@ public class MachinesListActivity extends Activity {
                 textView.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
                 textView.setGravity(Gravity.CENTER);
                 textView.setPadding(0, 0, 0, 15);
+                textView.setTextColor(Color.WHITE);
                 textView.setText(machine.getMachineName() + machineAvailable);
                 machinesContainer.addView(textView);
             }

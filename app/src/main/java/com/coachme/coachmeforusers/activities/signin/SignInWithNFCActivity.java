@@ -1,4 +1,4 @@
-package com.coachme.coachmeforusers.activities;
+package com.coachme.coachmeforusers.activities.signin;
 
 import android.app.Activity;
 import android.nfc.NfcAdapter;
@@ -20,7 +20,7 @@ import java.io.IOException;
 import static com.coachme.coachmeforusers.CoachMeForUsersApp.setCurrentUser;
 import static com.coachme.coachmeforusers.utils.Helper.API_ENDPOINT;
 
-public class SignInActivity extends Activity {
+public class SignInWithNFCActivity extends Activity {
     public static int READER_FLAGS =
             NfcAdapter.FLAG_READER_NFC_A | NfcAdapter.FLAG_READER_SKIP_NDEF_CHECK;
 

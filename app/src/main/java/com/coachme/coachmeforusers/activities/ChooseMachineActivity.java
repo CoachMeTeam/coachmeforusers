@@ -2,6 +2,7 @@ package com.coachme.coachmeforusers.activities;
 
 import android.app.Activity;
 import android.content.Intent;
+import android.graphics.Color;
 import android.os.Bundle;
 import android.view.Gravity;
 import android.view.View;
@@ -44,7 +45,10 @@ public class ChooseMachineActivity extends Activity {
             for (final Machine machine : machines) {
                 if (!machine.isUsedByATablet()) {
                     Button button = new Button(this);
-                    button.setLayoutParams(new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT));
+                    RelativeLayout.LayoutParams layoutParams = new RelativeLayout.LayoutParams(RelativeLayout.LayoutParams.MATCH_PARENT, RelativeLayout.LayoutParams.MATCH_PARENT);
+                    button.setLayoutParams(layoutParams);
+                    button.setBackgroundResource(R.drawable.buttonshape);
+                    button.setTextColor(Color.WHITE);
                     button.setText(machine.getMachineName());
                     button.setGravity(Gravity.CENTER);
                     button.setOnClickListener(new View.OnClickListener() {

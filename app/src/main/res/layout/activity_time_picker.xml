@@ -4,6 +4,7 @@
     android:id="@+id/activity_time_picker"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
+    android:background="@color/activityBackgroundColor"
     android:paddingBottom="@dimen/activity_vertical_margin"
     android:paddingLeft="@dimen/activity_horizontal_margin"
     android:paddingRight="@dimen/activity_horizontal_margin"
@@ -12,20 +13,24 @@
 
     <Button
         android:id="@+id/timePickerPlusButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="66dp"
-        android:text="@string/time_picker_plus_button_text" />
+        android:background="@drawable/buttonshape"
+        android:text="@string/timepickerplus_button_text"
+        android:textColor="#FFFFFF" />
 
     <Button
         android:id="@+id/timePickerLessButton"
-        android:layout_width="wrap_content"
+        android:layout_width="100dp"
         android:layout_height="wrap_content"
         android:layout_alignStart="@+id/timePickerPlusButton"
         android:layout_centerVertical="true"
-        android:text="@string/time_picker_less_button_text" />
+        android:background="@drawable/buttonshape"
+        android:text="@string/timepickerless_button_text"
+        android:textColor="#FFFFFF" />
 
     <TextView
         android:id="@+id/timePickerTextView"
@@ -34,15 +39,18 @@
         android:layout_below="@+id/timePickerPlusButton"
         android:layout_centerHorizontal="true"
         android:layout_marginTop="46dp"
+        android:textColor="#FFFFFF"
         android:textSize="@dimen/time_picker_text_text_size" />
 
     <Button
         android:id="@+id/startTrainingButton"
-        android:layout_width="wrap_content"
+        android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_centerHorizontal="true"
         android:layout_marginBottom="43dp"
-        android:text="@string/start_training_button_text" />
+        android:background="@drawable/buttonshape"
+        android:text="@string/starttraining_button_text"
+        android:textColor="#FFFFFF" />
 
 </RelativeLayout>

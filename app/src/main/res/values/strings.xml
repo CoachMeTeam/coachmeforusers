@@ -1,12 +1,16 @@
 <resources>
     <string name="app_name">CoachMeForUsers</string>
-    <string name="sign_in_button_text">Se connecter</string>
-    <string name="time_picker_less_button_text">-</string>
-    <string name="time_picker_plus_button_text">+</string>
-    <string name="start_training_button_text">Démarrer l\'entrainement</string>
+    <string name="signinwithnfc_button_text">S\'identifier avec sa carte d\'abonné</string>
+    <string name="signinwithwithcredentials_button_text">S\'identifier avec ses identifiants</string>
+    <string name="signin_button_text">Se connecter</string>
+    <string name="timepickerless_button_text">-</string>
+    <string name="timepickerplus_button_text">+</string>
+    <string name="starttraining_button_text">Démarrer l\'entrainement</string>
     <string name="stop_training_button_text">Stopper l\'entrainement</string>
     <string name="choosemachine_textview_text">Veuiller choisir une machine</string>
-    <string name="logout_button_text">Se déconnecter</string>
+    <string name="machinessuggested_textview_text">Suggestion de machines selon vos objectifs</string>
+    <string name="logoutbutton_text">Se déconnecter</string>
     <string name="gotomachineslist_button_text">Voir la liste des machines disponibles</string>
+    <string name="credentialsplaceholder_text">Saisir vos identifiants</string>
     <string name="title_activity_settings">Settings</string>
 </resources>
